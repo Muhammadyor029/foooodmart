@@ -153,7 +153,7 @@ def add_product_view(request):
         
     return render(request, 'add_product.html', {'wallet': wallet, 'categories': categories})
 def blog_list_view(request):
-    """Barcha bloglar ro'yxati sahifasi"""
+
     wallet = get_wallet()
     blogs = Post.objects.all().order_by('-id')
     return render(request, 'blog.html', {'wallet': wallet, 'blogs': blogs})
