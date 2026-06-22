@@ -82,7 +82,7 @@ def add_to_cart_view(request, id):
         cart_item.quantity += 1
         cart_item.save()
         
-    messages.success(request, f"'{product.name}' savatga qo'shildi! 🛒")
+    messages.success(request, f"'{product.name}' savatga qoshildi")
     return redirect('home')
 
 def remove_from_cart_view(request, id):
@@ -90,7 +90,7 @@ def remove_from_cart_view(request, id):
     session_key = get_session_key(request)
     cart_item = get_object_or_404(CartItem, id=id, session_key=session_key)
     cart_item.delete()
-    messages.success(request, "Mahsulot savatdan olib tashlandi")
+    messages.success(request, "mahsulot savatdanga tushdi ")
     return redirect('cart')
 
 def checkout_view(request):
@@ -126,7 +126,7 @@ def add_blog_view(request):
         
         if title and content:
             Post.objects.create(title=title, content=content, image=image)
-            messages.success(request, "yangilik qoshldi ")
+            messages.success(request, "yangilik ")
             return redirect('home')
             
     return render(request, 'add_blog.html', {'wallet': wallet})
@@ -148,7 +148,7 @@ def add_product_view(request):
             name=name, price=price, category=category,
             image=image, is_trending=is_trending
         )
-        messages.success(request, f"'{name}' dokonga qoshldi ")
+        messages.success(request, f"'{name}' dokonga tushdi ")
         return redirect('home')
         
     return render(request, 'add_product.html', {'wallet': wallet, 'categories': categories})
