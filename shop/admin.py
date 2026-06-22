@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Wallet, CartItem, Post
+from .models import Category, Product, Wallet, CartItem, Post , ContactMessage
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -19,5 +19,12 @@ class CartItemAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'created_at']
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'subject', 'created_at'] 
+    search_fields = ['name', 'subject', 'message']            
+    readonly_fields = ['created_at']                          
 
 admin.site.register(Wallet)

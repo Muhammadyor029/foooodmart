@@ -86,7 +86,7 @@ def add_to_cart_view(request, id):
     return redirect('home')
 
 def remove_from_cart_view(request, id):
-    """Mahsulotni savatdan butunlay olib tashlash"""
+   
     session_key = get_session_key(request)
     cart_item = get_object_or_404(CartItem, id=id, session_key=session_key)
     cart_item.delete()
